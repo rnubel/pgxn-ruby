@@ -3,7 +3,7 @@ require 'open3'
 module Pgxn
   def self.version
     # This comes out of stderr, apparently.
-    pgxn_exec("--version")[2].gets.trim
+    pgxn_exec("--version")[2].gets.strip
   end
 
   def self.install(extension_name)
