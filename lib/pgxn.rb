@@ -3,19 +3,22 @@ require 'open3'
 module Pgxn
   def self.version
     # This comes out of stderr, apparently.
-    pgxn_exec("--version")[2].gets.strip
+    pgxn_exec("--version") do |stdin, stdout, stderr|
+      return stderr.gets.strip
+    end
   end
 
   def self.install(extension_name)
-    si, so, se = pgxn_exec("install #{extension_name}")
-
-    while s = so.gets
-      puts s
+    pgxn_exec("install #{extension_name}") do |stdin, stdout, stderr|
+      # TODO: Find a better way to do this. Maybe exec?
+      while s = so.gets
+        puts s
+      end
     end
   end
 
   def self.pgxn_exec(cmd)
-    si, so, se = Open3.popen3 "PYTHONPATH='#{pgxn_path}' #{pgxn_bin_path}/pgxn #{cmd}"
+    yield Open3.popen3 "PYTHONPATH='#{pgxn_path}' #{pgxn_bin_path}/pgxn #{cmd}"
   end
 
   private
