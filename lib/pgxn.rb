@@ -11,7 +11,7 @@ module Pgxn
   def self.install(extension_name)
     pgxn_exec("install #{extension_name}") do |stdin, stdout, stderr|
       # TODO: Find a better way to do this. Maybe exec?
-      while s = so.gets
+      while s = stdout.gets
         puts s
       end
     end
