@@ -1,0 +1,3 @@
+[submodule "vendor/pgxnclient"]
+	path = vendor/pgxnclient
+	url = https://github.com/pgxn/pgxnclient.git

@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pgxn/ruby/version'
+require 'pgxn/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "pgxn-ruby"
-  spec.version       = Pgxn::Ruby::VERSION
+  spec.version       = Pgxn::VERSION
   spec.authors       = ["Robert Nubel"]
   spec.email         = ["rnubel@enovafinancial.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{PGXN CLI interface for Ruby}
+  spec.summary       = %q{pgxn-client wrapper}
   spec.homepage      = ""
   spec.license       = "MIT"
 
